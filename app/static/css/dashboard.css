@@ -103,3 +103,26 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+.right-area {
+  float: right;
+  z-index: 2;
+  vertical-align: middle;
+  display: inline-block;
+  margin-top:-15px;
+}
+
+.left-area {
+  float: left;
+  margin-left: 3px;
+  z-index: 2;
+  vertical-align: middle;
+  display: inline-block;
+  margin-top:-15px;
+}
+
+form input {
+    width: 100%;
+}
+
+
