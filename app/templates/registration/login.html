@@ -21,21 +21,10 @@
     <nav class="navbar navbar-inverse navbar-fixed-top font-center">
       <center><h1>My帳本</h1></center>
     </nav>
-	{% if form.errors %}
-	<p>您的帳號或密碼有誤。</p>
-	{% endif %}
-
-	{% if next %}
-	    {% if user.is_authenticated %}
-	    <p>您沒有權限造訪此網頁。</p>
-	    {% else %}
-	    <p>請先登入。</p>
-	    {% endif %}
-	{% endif %}
 	<form method="post" action="/accounts/login">
 	{% csrf_token %}
 	<table align="center" style="margin-top:100px">
-	<tr>
+	<tr> 
 	    <td>{{ form.username.label_tag }}</td>
 	    <td>{{ form.username }}</td>
 	</tr>
