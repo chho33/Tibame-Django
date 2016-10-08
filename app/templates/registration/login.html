@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>accounts demo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+    <style>
+      td {
+        padding: 5px
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top font-center">
+      <center><h1>My帳本</h1></center>
+    </nav>
+	{% if form.errors %}
+	<p>您的帳號或密碼有誤。</p>
+	{% endif %}
+
+	{% if next %}
+	    {% if user.is_authenticated %}
+	    <p>您沒有權限造訪此網頁。</p>
+	    {% else %}
+	    <p>請先登入。</p>
+	    {% endif %}
+	{% endif %}
+	<form method="post" action="/accounts/login">
+	{% csrf_token %}
+	<table align="center" style="margin-top:100px">
+	<tr>
+	    <td>{{ form.username.label_tag }}</td>
+	    <td>{{ form.username }}</td>
+	</tr>
+	<tr>
+	    <td>{{ form.password.label_tag }}</td>
+	    <td>{{ form.password }}</td>
+	</tr>
+	<tr>
+		<!--我是next:{{ next }}-->
+	</tr>
+	<tr>
+	    <td></td>
+	    <td>
+	        <input type="submit" value="login" class="btn small-button" />
+	    </td>
+	</tr>
+	</table>
+    <input type="hidden" name="next" value="/" />
+	</form>
+</body>
+</html>
